@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Postman Echo" tests="37" time="20.081">
-  <testsuite name="Request Methods / GET Request" id="f1594ce5-b0fd-4e84-9516-1d2c85425262" timestamp="2024-11-04T07:25:57.599Z" tests="2" failures="1" errors="0" time="0.733">
-    <testcase name="response is ok" time="0.733" classname="RequestMethodsGetRequest"/>
-    <testcase name="response body has json with request queries" time="0.733" classname="RequestMethodsGetRequest">
+<testsuites name="Postman Echo" tests="6" time="1.468">
+  <testsuite name="Request Methods / GET Request" id="d008d2a2-c306-4ff0-a250-e1c5849c5e51" timestamp="2024-11-12T09:51:55.098Z" tests="2" failures="1" errors="0" time="0.743">
+    <testcase name="response is ok" time="0.743" classname="RequestMethodsGetRequest"/>
+    <testcase name="response body has json with request queries" time="0.743" classname="RequestMethodsGetRequest">
       <failure type="AssertionFailure" message="expected { args: {}, headers: { …(10) }, …(1) } in response to contain property 'args.foo1'">
         <![CDATA[Failed 1 times.]]>
-        <![CDATA[Collection JSON ID: b71b7452-8053-4154-9f24-7c9fa056c21c.]]>
+        <![CDATA[Collection JSON ID: 0915448b-3955-43a5-8657-5d87368fd752.]]>
         <![CDATA[Collection name: Postman Echo.]]>
         <![CDATA[Request name: Request Methods / GET Request.]]>
         <![CDATA[Test description: response body has json with request queries.]]>
@@ -15,12 +15,12 @@
       </failure>
     </testcase>
   </testsuite>
-  <testsuite name="Request Methods / POST Raw Text" id="98f3d397-6887-488f-b06e-7e14b11b39c7" timestamp="2024-11-04T07:25:57.599Z" tests="3" failures="1" errors="0" time="0.148">
+  <testsuite name="Request Methods / POST Raw Text" id="aabb8707-8246-41d1-9360-9560f7d5fd5b" timestamp="2024-11-12T09:51:55.098Z" tests="3" failures="1" errors="0" time="0.148">
     <testcase name="response is ok" time="0.148" classname="RequestMethodsPostRawText"/>
     <testcase name="response body has json with request body" time="0.148" classname="RequestMethodsPostRawText">
       <failure type="AssertionFailure" message="expected response body json at &quot;data&quot; to contain 'This is expected to be sent back as p…' but got '{\n    &quot;test&quot;: &quot;value&quot;\n}'">
         <![CDATA[Failed 1 times.]]>
-        <![CDATA[Collection JSON ID: b71b7452-8053-4154-9f24-7c9fa056c21c.]]>
+        <![CDATA[Collection JSON ID: 0915448b-3955-43a5-8657-5d87368fd752.]]>
         <![CDATA[Collection name: Postman Echo.]]>
         <![CDATA[Request name: Request Methods / POST Raw Text.]]>
         <![CDATA[Test description: response body has json with request body.]]>
@@ -31,19 +31,19 @@
     </testcase>
     <testcase name="testing method" time="0.148" classname="RequestMethodsPostRawText"/>
   </testsuite>
-  <testsuite name="Request Methods / POST Form Data" id="932166e2-7874-41d1-924d-62309744a6ef" timestamp="2024-11-04T07:25:57.599Z" tests="2" failures="0" errors="0" time="0.147">
-    <testcase name="response is ok" time="0.147" classname="RequestMethodsPostFormData"/>
-    <testcase name="response body has json with form data" time="0.147" classname="RequestMethodsPostFormData"/>
+  <testsuite name="Request Methods / POST Form Data" id="8e5c01ec-29d0-45d7-8a2b-afcadfc010b7" timestamp="2024-11-12T09:51:55.098Z" tests="2" failures="0" errors="0" time="0.143">
+    <testcase name="response is ok" time="0.143" classname="RequestMethodsPostFormData"/>
+    <testcase name="response body has json with form data" time="0.143" classname="RequestMethodsPostFormData"/>
   </testsuite>
-  <testsuite name="Request Methods / PUT Request" id="0674dd6f-47a5-4d36-8ead-7a712a9e29d1" timestamp="2024-11-04T07:25:57.599Z" tests="2" failures="0" errors="0" time="0.143">
-    <testcase name="response is ok" time="0.143" classname="RequestMethodsPutRequest"/>
-    <testcase name="response body has json with form data" time="0.143" classname="RequestMethodsPutRequest"/>
+  <testsuite name="Request Methods / PUT Request" id="82edef06-6a8e-43d0-832c-83a8914db26a" timestamp="2024-11-12T09:51:55.098Z" tests="2" failures="0" errors="0" time="0.145">
+    <testcase name="response is ok" time="0.145" classname="RequestMethodsPutRequest"/>
+    <testcase name="response body has json with form data" time="0.145" classname="RequestMethodsPutRequest"/>
   </testsuite>
-  <testsuite name="Request Methods / PATCH Request" id="c9e0ece2-d18e-45ec-9fdc-21ab528c0db8" timestamp="2024-11-04T07:25:57.599Z" tests="2" failures="0" errors="0" time="1.016">
-    <testcase name="response is ok" time="1.016" classname="RequestMethodsPatchRequest"/>
-    <testcase name="response body has json with form data" time="1.016" classname="RequestMethodsPatchRequest"/>
+  <testsuite name="Request Methods / PATCH Request" id="7a3987a0-b142-4f4b-982b-324751ad3d88" timestamp="2024-11-12T09:51:55.098Z" tests="2" failures="0" errors="0" time="0.143">
+    <testcase name="response is ok" time="0.143" classname="RequestMethodsPatchRequest"/>
+    <testcase name="response body has json with form data" time="0.143" classname="RequestMethodsPatchRequest"/>
   </testsuite>
-  <testsuite name="Request Methods / DELETE Request" id="c90b3157-1df3-430b-ae47-8f1732b2542a" timestamp="2024-11-04T07:25:57.599Z" tests="2" failures="0" errors="0" time="0.146">
+  <testsuite name="Request Methods / DELETE Request" id="d72808b4-7d90-498c-afed-7dff5f493e27" timestamp="2024-11-12T09:51:55.098Z" tests="2" failures="0" errors="0" time="0.146">
     <testcase name="response is ok" time="0.146" classname="RequestMethodsDeleteRequest"/>
     <testcase name="response body has json with form data" time="0.146" classname="RequestMethodsDeleteRequest"/>
   </testsuite>
