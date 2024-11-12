@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Postman Echo" tests="37" time="20.081">
+  <testsuite name="Request Methods / GET Request" id="f1594ce5-b0fd-4e84-9516-1d2c85425262" timestamp="2024-11-04T07:25:57.599Z" tests="2" failures="1" errors="0" time="0.733">
+    <testcase name="response is ok" time="0.733" classname="RequestMethodsGetRequest"/>
+    <testcase name="response body has json with request queries" time="0.733" classname="RequestMethodsGetRequest">
+      <failure type="AssertionFailure" message="expected { args: {}, headers: { …(10) }, …(1) } in response to contain property 'args.foo1'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: b71b7452-8053-4154-9f24-7c9fa056c21c.]]>
+        <![CDATA[Collection name: Postman Echo.]]>
+        <![CDATA[Request name: Request Methods / GET Request.]]>
+        <![CDATA[Test description: response body has json with request queries.]]>
+        <![CDATA[Error message: expected { args: {}, headers: { …(10) }, …(1) } in response to contain property 'args.foo1'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected { args: {}, headers: { …(10) }, …(1) } in response to contain property 'args.foo1'
+   at Object.eval sandbox-script.js:2:1).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Request Methods / POST Raw Text" id="98f3d397-6887-488f-b06e-7e14b11b39c7" timestamp="2024-11-04T07:25:57.599Z" tests="3" failures="1" errors="0" time="0.148">
+    <testcase name="response is ok" time="0.148" classname="RequestMethodsPostRawText"/>
+    <testcase name="response body has json with request body" time="0.148" classname="RequestMethodsPostRawText">
+      <failure type="AssertionFailure" message="expected response body json at &quot;data&quot; to contain 'This is expected to be sent back as p…' but got '{\n    &quot;test&quot;: &quot;value&quot;\n}'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: b71b7452-8053-4154-9f24-7c9fa056c21c.]]>
+        <![CDATA[Collection name: Postman Echo.]]>
+        <![CDATA[Request name: Request Methods / POST Raw Text.]]>
+        <![CDATA[Test description: response body has json with request body.]]>
+        <![CDATA[Error message: expected response body json at "data" to contain 'This is expected to be sent back as p…' but got '{\n    "test": "value"\n}'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response body json at "data" to contain 'This is expected to be sent back as p…' but got '{\n    "test": "value"\n}'
+   at Object.eval sandbox-script.js:2:2).]]>
+      </failure>
+    </testcase>
+    <testcase name="testing method" time="0.148" classname="RequestMethodsPostRawText"/>
+  </testsuite>
+  <testsuite name="Request Methods / POST Form Data" id="932166e2-7874-41d1-924d-62309744a6ef" timestamp="2024-11-04T07:25:57.599Z" tests="2" failures="0" errors="0" time="0.147">
+    <testcase name="response is ok" time="0.147" classname="RequestMethodsPostFormData"/>
+    <testcase name="response body has json with form data" time="0.147" classname="RequestMethodsPostFormData"/>
+  </testsuite>
+  <testsuite name="Request Methods / PUT Request" id="0674dd6f-47a5-4d36-8ead-7a712a9e29d1" timestamp="2024-11-04T07:25:57.599Z" tests="2" failures="0" errors="0" time="0.143">
+    <testcase name="response is ok" time="0.143" classname="RequestMethodsPutRequest"/>
+    <testcase name="response body has json with form data" time="0.143" classname="RequestMethodsPutRequest"/>
+  </testsuite>
+  <testsuite name="Request Methods / PATCH Request" id="c9e0ece2-d18e-45ec-9fdc-21ab528c0db8" timestamp="2024-11-04T07:25:57.599Z" tests="2" failures="0" errors="0" time="1.016">
+    <testcase name="response is ok" time="1.016" classname="RequestMethodsPatchRequest"/>
+    <testcase name="response body has json with form data" time="1.016" classname="RequestMethodsPatchRequest"/>
+  </testsuite>
+  <testsuite name="Request Methods / DELETE Request" id="c90b3157-1df3-430b-ae47-8f1732b2542a" timestamp="2024-11-04T07:25:57.599Z" tests="2" failures="0" errors="0" time="0.146">
+    <testcase name="response is ok" time="0.146" classname="RequestMethodsDeleteRequest"/>
+    <testcase name="response body has json with form data" time="0.146" classname="RequestMethodsDeleteRequest"/>
+  </testsuite>
+</testsuites>

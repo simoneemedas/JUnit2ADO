@@ -1,0 +1,9 @@
+{
+    "Protocol": "https",
+    "Instance": "dev.azure.com",
+    "Organization": "simonemedas",
+    "ProjectName": "test project",
+    "Team": "test project Team",
+    "PAT": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "ApiVersion": "6.0"
+}
