@@ -1,4 +1,4 @@
 # JUnit2TestPlan
-PowerShell script to connect Postman Test Case execution to Azure DevOps TestPlans/TestSuites.
+Connect Postman API tests to Azure DevOps Test Plans with JUnit2ADO. This PowerShell tool simplifies QA workflows and boosts traceability in CI/CD.
 
-[see doc:](https://www.linkedin.com)
+[see doc:](https://www.linkedin.com/pulse/junit2ado-simone-medas-9emac)
