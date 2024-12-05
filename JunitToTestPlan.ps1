@@ -143,11 +143,11 @@ begin {
     $juGlobalStart = [datetime]::Parse($juFirstTestSuite.timestamp);
     $juGlobalEnd = $juGlobalStart.AddSeconds($junitXml.testsuites.time);
     
-    $testSuites = $devops.GetTestSuitesByTestPlanId($testPlanId);        
+    $testSuites = $devops.GetTestSuitesByTestPlanId($testPlanId);
     if( $testSuites.count -eq 0 ) {
         Write-Error "No Test Suites found in the TestPlan."
         exit(0);
-    }    
+    }
     
     foreach($juTs in $juTestSuites)
     {
@@ -165,17 +165,22 @@ begin {
         # starting from the root node (<testsuites>.name) go through all the leaf nodes 
         # except the last one, which is not a folder but a test case
         $parentSuiteId = $devops.GetTestSuiteByParentSuiteId($testSuites, $null, $adoRootTestSuiteName).id;
+        if($null -eq $parentSuiteId) {
+            Write-Warning "Test Suite not found with name: $adoRootTestSuiteName";
+            #Exit 1;
+        }
+
         foreach($juTestSuiteSubfolder in $juTestSuiteTree[0..($juTestSuiteTree.Length - 2)])
         {
             $testSuiteFolder = $devops.GetTestSuiteByParentSuiteId($testSuites, $parentSuiteId, $juTestSuiteSubfolder);
             if ($null -eq $testSuiteFolder) {
-                Write-Error "No Test cases found on Test Suite tree path: $($juTs.name)";
+                Write-Warning "Test suite not found at path: $($juTs.name)";
                 $parentSuiteId = $null;
                 break;
             }
             else {
                 $parentSuiteId = $testSuiteFolder.id;
-            }            
+            }
         }
 
         # if last leaf test suite node found
@@ -233,16 +238,23 @@ begin {
             }
 
             # if already not exist create it and get the Id
-            if($null -eq $adoTestCase) {
-                $testCase = $devops.CreateTestCase($testPlanId, 
-                    $parentSuiteId, 
-                    $juTestCaseName, 
-                    $juTestCaseName);
+            if($null -eq $adoTestCase) {                
+                try {
+                    $testCase = $devops.CreateTestCase($testPlanId, 
+                        $parentSuiteId, 
+                        $juTestCaseName, 
+                        $juTestCaseName);
+                }
+                catch {
+                    Write-Warning "Test Case '$juTestCaseName' wasn't created! Caused by: $($_.Exception.Message)";
+                    continue;
+                }
+
                 if($null -ne $testCase -and $testCase.value.Count -ne 0){
                     $adoTestCase = $testCase.value[0].workItem;
                 }            
                 else {
-                    Write-Error "Test Case '$juTestCaseName' wasn't created!";
+                    Write-Warning "Test Case '$juTestCaseName' wasn't created!";
                     continue;
                 }
             }
@@ -272,31 +284,39 @@ begin {
         }
     }
 
-    # to link run and the test plans
-    # 1) Start a new Run in the Specific TestPlan
-    # 2) Update Results (done in specific test case)
+    if($testResults.Count -gt 0) {
+        # to link run and the test plans
+        # 1) Start a new Run in the Specific TestPlan
+        # 2) Update Results (done in specific test case)
 
-    # Starting a new Run in the Specific TestPlan 
-    # finally we get the TestPoint for given TestCase
+        # Starting a new Run in the Specific TestPlan 
+        # finally we get the TestPoint for given TestCase
 
-    $adoRun = $devops.CreateTestRunInTestPlan($testPlanId, $junitXml.testsuites.name, $testPoints, $daoBuildInfo, $juGlobalStart);  
+        $adoRun = $devops.CreateTestRunInTestPlan($testPlanId, $junitXml.testsuites.name, $testPoints, $daoBuildInfo, $juGlobalStart);  
 
-    # 2) Update results
-    $updateResults = $devops.UpdateTestResults($adoRun.id, $testResults);        
+        # 2) Update results
+        $updateResults = $devops.UpdateTestResults($adoRun.id, $testResults);        
 
-    # 3) complete run.
-    #Start-Sleep -Seconds 10
-    $setRunAsCompleted = $devops.UpdateTestRun($adoRun.id, $daoBuildInfo)
-    
-    Write-Output "";
-    Write-Output "-------------------------";
-    Write-Output "  Test Results Updated";
-    Write-Output "RunId: $($setRunAsCompleted.id), BuildId: $($setRunAsCompleted.build.id), PlanId: $($setRunAsCompleted.plan.id)";
-    Write-Output "Total Tests: $($setRunAsCompleted.totalTests), Passed: $($setRunAsCompleted.passedTests), PlanId: $($setRunAsCompleted.plan.id)";
-    Write-Output "Run Url: $($setRunAsCompleted.webAccessUrl)";
-    Write-Output "  Job completed";
-    Write-Output "-------------------------";
+        # 3) complete run.
+        #Start-Sleep -Seconds 10
+        $setRunAsCompleted = $devops.UpdateTestRun($adoRun.id, $daoBuildInfo)
+        
+        Write-Output "";
+        Write-Output "-------------------------";
+        Write-Output "Test Results Updated";
+        Write-Output "";
+        Write-Output "RunId: $($setRunAsCompleted.id), BuildId: $($setRunAsCompleted.build.id), PlanId: $($setRunAsCompleted.plan.id)";
+        Write-Output "Total Tests: $($setRunAsCompleted.totalTests), Passed: $($setRunAsCompleted.passedTests), PlanId: $($setRunAsCompleted.plan.id)";
+        Write-Output "Run Url: $($setRunAsCompleted.webAccessUrl)";
+        Write-Output "";
+        Write-Output "Job completed";
+        Write-Output "-------------------------";
 
-    # RunId variable output for pipeline
-    Write-Host "##vso[task.setvariable variable=RunId;isOutput=true]$($adoRun.id)"
+        # RunId variable output for pipeline
+        Write-Host "##vso[task.setvariable variable=RunId;isOutput=true]$($adoRun.id)";
+    }
+    else {
+        Write-Warning "No TestCase verified";
+        Exit 1;        
+    }
 }

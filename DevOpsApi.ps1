@@ -18,7 +18,7 @@ class RestClient {
     [hashtable] GetInitialHeaders() {
         $base64Auth = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$($this.azureDevOpsClient.PAT)"))
         return @{
-            "Authorization" = "Basic $($base64Auth)"            
+            "Authorization" = "Basic $($base64Auth)"
             "Content-Type"  = "application/json"
         }
     }
