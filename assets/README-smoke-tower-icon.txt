@@ -1,0 +1,1 @@
+Smoke Tower notification icon assets are intended for browser push notification and email report branding. Prefer a square PNG (128x128 or 192x192) for Web Push notifications.
